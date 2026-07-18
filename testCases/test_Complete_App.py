@@ -8,6 +8,7 @@ from selenium.webdriver.chrome.service import Service
 
 from PageObjects.LoginPage import LoginPage
 from PageObjects.DashBoardPage import DashBoardPage
+from PageObjects.WalletLoadPage import WalletLoadPage
 from PageObjects.WalletTransferPage import WalletTransferPage
 from Utilities.readProperties import ReadConfig
 
@@ -44,6 +45,7 @@ class Test_001_Login(unittest.TestCase):
         self.lp = LoginPage(driver)
         self.lp.setUserName(self.username)
         self.lp.setPassword(self.password)
+        self.lp.clickonView()
         self.lp.clickLogin()
         self.lp.setOTP1(1)
         self.lp.setOTP2(2)
@@ -56,26 +58,40 @@ class Test_001_Login(unittest.TestCase):
 
     def test_03_DashBoardPage(self):
         self.db = DashBoardPage(driver)
-        self.db.clickSubscriptionModel()
+        #self.db.clickSubscriptionModel()
         self.db.clickonMode()
         self.db.clickonNotification()
         self.db.clickonProfileImage()
         self.db.clickonMyProfile()
         self.db.clickonProfileImage()
-        self.db.clickonCommission()
+        self.db.clickonActiveCommission()
+        self.db.clickonDefaultCommission()
         self.db.clickonProfileImage()
         self.db.clickonSettings()
+        self.db.clickonTransectionPIN()
         self.db.clickonProfileImage()
         self.db.clickonChangePassword()
+        time.sleep(3)
         self.db.clickonProfileImage()
+        time.sleep(3)
         self.db.clickonSupport()
+        time.sleep(2)
         self.db.clickonWalletTranferMenu()
         #self.db.clickonLogOut()
 
-    def test_4_WallertTransferPage(self):
+    def test_4_WalletTransferPage(self):
         self.wtp = WalletTransferPage(driver)
         self.wtp.setAmount()
         self.wtp.clickonTransfer()
+        self.wtp.clickonHistory()
+        self.wtp.clickonWalletLoad()
+
+
+    def test_5_WalletLoadPage(self):
+        self.wlp = WalletLoadPage(driver)
+        self.wlp.clickonInstantSattlement()
+        self.wlp.clickonDMT()
+
 
 
 

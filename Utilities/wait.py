@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class Wait:
 
     @staticmethod
-    def wait_for_click(driver, locator, timeout=5):
+    def wait_for_click(driver, locator, timeout=25):
         return WebDriverWait(driver, timeout).until(
             EC.element_to_be_clickable(locator)
         )

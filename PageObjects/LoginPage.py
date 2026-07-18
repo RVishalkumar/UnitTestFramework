@@ -30,6 +30,13 @@ class LoginPage:
     def setPassword(self,password):
         self.driver.find_element(By.NAME,self.textbox_password_name).send_keys(password)
 
+    def clickonView(self):
+        self.driver.find_element(By.XPATH,"//*[@id='loginForm']/div[2]/span").click()
+        if "login" in self.driver.current_url:
+            self.driver.save_screenshot(".\\Screenshortpass\\test_02_LoginPage_loginpass.png")
+        else:
+            self.driver.save_screenshot(".\\Screenshortfail\\test_02_LoginPage_loginfail.png")
+
     def clickLogin(self):
         Wait.wait_for_click(self.driver,(By.XPATH, self.btnLogin_xpath)).click()
 
@@ -57,6 +64,11 @@ class LoginPage:
 
     def setOTP6(self,otp):
         self.driver.find_element(By.XPATH,self.textOTP6_xpath).send_keys(otp)
+        if "verify-otp" in self.driver.current_url:
+            self.driver.save_screenshot(".\\Screenshortpass\\test_02_LoginPage_VerifyOTP.png")
+        else:
+            self.driver.save_screenshot(".\\Screenshortfail\\test_02_LoginPage_VerifyOTP.png")
+
 
     def clickonContinue(self):
         self.driver.find_element(By.XPATH,self.btnContinue_xpath).click()
