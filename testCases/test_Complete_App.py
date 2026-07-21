@@ -5,11 +5,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 
-
+from PageObjects import DMTPage
 from PageObjects.LoginPage import LoginPage
 from PageObjects.DashBoardPage import DashBoardPage
 from PageObjects.WalletLoadPage import WalletLoadPage
 from PageObjects.WalletTransferPage import WalletTransferPage
+from PageObjects.DMTPage import DMTPage
 from Utilities.readProperties import ReadConfig
 
 class Test_001_Login(unittest.TestCase):
@@ -79,7 +80,7 @@ class Test_001_Login(unittest.TestCase):
         self.db.clickonWalletTranferMenu()
         #self.db.clickonLogOut()
 
-    def test_4_WalletTransferPage(self):
+    def test_04_WalletTransferPage(self):
         self.wtp = WalletTransferPage(driver)
         self.wtp.setAmount()
         self.wtp.clickonTransfer()
@@ -87,10 +88,34 @@ class Test_001_Login(unittest.TestCase):
         self.wtp.clickonWalletLoad()
 
 
-    def test_5_WalletLoadPage(self):
+    def test_05_WalletLoadPage(self):
         self.wlp = WalletLoadPage(driver)
         self.wlp.clickonInstantSattlement()
         self.wlp.clickonDMT()
+
+    def test_06_DMTPage(self):
+        self.dmt = DMTPage(driver)
+        self.dmt.dmtTransactionBank1(9407271094)
+        self.dmt.kycRemitterBank1()
+        self.dmt.addRemitterBank1()
+        self.dmt.clickonAddBeneficiaryBank1()
+        self.dmt.clickonFetchallBeneficiaryBank1()
+        self.wlp.clickonDMT()
+        self.dmt.dmtTransactionBank2(9631312967)
+        self.dmt.kycRemitterBank2()
+        self.dmt.addRemitterBank2()
+        self.dmt.clickonAddBeneficiaryBank2()
+        self.dmt.clickonFetchallBeneficiaryBank2()
+        self.wlp.clickonDMT()
+        self.dmt.dmtTransactionBank7(9407271094)
+        self.dmt.kycRemitterBank7()
+        self.dmt.addRemitterBank7()
+        self.dmt.clickonAddBeneficiaryBank7()
+        self.dmt.clickonFetchallBeneficiaryBank7()
+        self.dmt.clickonRechargeMenu()
+
+
+
 
 
 

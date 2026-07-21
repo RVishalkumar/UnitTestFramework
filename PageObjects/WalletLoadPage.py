@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 class WalletLoadPage:
 
     btnInsSattlement_xpath = "//button[@id='payInSecDivBtn']"
-    lnkdmt_xpath = "//a[@href='https://b2b.digifintel.com/retailer/dmt/transaction']"
+    lnkdmt_xpath = "//*[@id='sidebar-menu']/li[4] "
 
     def __init__(self,driver):
         self.driver = driver

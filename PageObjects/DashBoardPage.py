@@ -19,7 +19,7 @@ class DashBoardPage:
     lnkchangepassword_xpath = "//a[text()=' Change Password']"
     lnksupport_xpath =  "//a[@href='https://b2b.digifintel.com/retailer/support']"
     lnkLOgout_xpath = "//a[@onclick='handleLogout()']"
-    btnwalletTransfermenu_xpath = "//a[@class='active-page']"
+    btnwalletTransfermenu_xpath = "//*[@id='sidebar-menu']/li[2]"
 
     def __init__(self,driver):
         self.driver = driver
@@ -254,6 +254,7 @@ class DashBoardPage:
         #time.sleep(5)
         Wait.wait_for_click(self.driver,(By.XPATH,"(//button[@class='btn btn-primary digiFin_orange_btn'])[1]")).click()
         #self.driver.find_element(By.XPATH,"(//button[@class='btn btn-primary digiFin_orange_btn'])[1]").click()
+
 
     def clickonTransectionPIN(self):
         Wait.wait_for_click(self.driver,(By.XPATH,self.btntransictionpin_xpath)).click()
