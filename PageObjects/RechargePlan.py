@@ -9,6 +9,7 @@ class RechargePage:
     txtmobilenumber_xpath = "//input[@id='premobile']"
     dropdownmobileOperator_xpath = "//select[@id='preoperator']"
     btnbrowsPlan_xpath = "//button[@id='checkMobileButton']"
+    lnkaepsMenu_xpath = "//*[@id='sidebar-menu']/li[6] "
 
 
     def __init__(self,driver):
@@ -48,4 +49,4 @@ class RechargePage:
 
 
     def clickonAEPSMenu(self):
-        self.driver.find_element(By.XPATH,"//*[@id='sidebar-menu']/li[6] ").click()
+        self.driver.find_element(By.XPATH,self.lnkaepsMenu_xpath).click()

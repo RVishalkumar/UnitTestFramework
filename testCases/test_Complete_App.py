@@ -6,8 +6,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 
 from PageObjects import DMTPage
+from PageObjects.AepsPage import AepsPage
+from PageObjects.AepsSettlementPage import AepsSettlementPage
+from PageObjects.DirectPayoutPage import DirectPayoutPage
 from PageObjects.LoginPage import LoginPage
 from PageObjects.DashBoardPage import DashBoardPage
+from PageObjects.RechargePlan import RechargePage
 from PageObjects.WalletLoadPage import WalletLoadPage
 from PageObjects.WalletTransferPage import WalletTransferPage
 from PageObjects.DMTPage import DMTPage
@@ -115,7 +119,32 @@ class Test_001_Login(unittest.TestCase):
         self.dmt.clickonRechargeMenu()
 
 
+    def test_07_RechargePage(self):
+        self.rp = RechargePage(driver)
+        self.rp.mobileRecharge()
+        self.rp.dthRecharge()
+        self.rp.clickonHistory()
+        self.rp.clickonAEPSMenu()
 
+
+    def test_08_AepsPage(self):
+        self.aeps = AepsPage(driver)
+        self.aeps.clickonAepsSettlement()
+
+
+
+    def test_09_AepsSettlementPage(self):
+        self.aepsSett = AepsSettlementPage(driver)
+        self.aepsSett.clickonDirectPayoutMenu()
+
+
+    def test_10_DirectPayoutPage(self):
+        self.dp = DirectPayoutPage(driver)
+        self.dp.clickonAddBank()
+        self.dp.clickonVerifyAction()
+        self.dp.payoutForm()
+        self.dp.clickonPopUp()
+        self.dp.clickonBBPSMenu()
 
 
 
