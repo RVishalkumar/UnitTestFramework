@@ -8,10 +8,13 @@ from selenium.webdriver.chrome.service import Service
 from PageObjects import DMTPage
 from PageObjects.AepsPage import AepsPage
 from PageObjects.AepsSettlementPage import AepsSettlementPage
+from PageObjects.BbpsPage import BbpsPage
+from PageObjects.CCPaymentPage import CCPaymentPage
 from PageObjects.DirectPayoutPage import DirectPayoutPage
 from PageObjects.LoginPage import LoginPage
 from PageObjects.DashBoardPage import DashBoardPage
 from PageObjects.RechargePlan import RechargePage
+from PageObjects.UPIPaymentPage import UPIPaymentPage
 from PageObjects.WalletLoadPage import WalletLoadPage
 from PageObjects.WalletTransferPage import WalletTransferPage
 from PageObjects.DMTPage import DMTPage
@@ -146,6 +149,27 @@ class Test_001_Login(unittest.TestCase):
         self.dp.clickonPopUp()
         self.dp.clickonBBPSMenu()
 
+
+    def test_11_BbpsPage(self):
+        self.bbps = BbpsPage(driver)
+        self.bbps.clickonElectricity()
+        self.bbps.clickonInsurance()
+        self.bbps.clickonPrepaid()
+        self.bbps.clickobCCPayment()
+
+
+    def test_12_CCPaymentPage(self):
+        self.cc = CCPaymentPage(driver)
+        self.cc.clickonccPayServer1()
+        self.cc.setOTP(1,2,3,4,5,6)
+        self.cc.clickonVerifyOTP()
+        self.cc.clickonUpiPayment()
+
+
+    def test_13_UPIPaymentPage(self):
+        self.upi = UPIPaymentPage(driver)
+        self.upi.paymenyViaQR()
+        self.upi.clickonCMS()
 
 
 
