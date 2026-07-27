@@ -5,16 +5,22 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 
-from PageObjects import DMTPage
+from PageObjects import SwiftXMoneyTransferPage
 from PageObjects.AepsPage import AepsPage
 from PageObjects.AepsSettlementPage import AepsSettlementPage
 from PageObjects.BbpsPage import BbpsPage
 from PageObjects.CCPaymentPage import CCPaymentPage
+from PageObjects.ComparePlans import ComparePlans
 from PageObjects.DirectPayoutPage import DirectPayoutPage
+from PageObjects.FundRequest import FundRequest
 from PageObjects.LoginPage import LoginPage
 from PageObjects.DashBoardPage import DashBoardPage
+from PageObjects.MyPlan import MyPlan
 from PageObjects.RechargePlan import RechargePage
+from PageObjects.ReportsPage import ReportsPage
 from PageObjects.UPIPaymentPage import UPIPaymentPage
+from PageObjects.CMSPage import CMSPage
+from PageObjects.SwiftXMoneyTransferPage import SwiftXMoneyTransferPage
 from PageObjects.WalletLoadPage import WalletLoadPage
 from PageObjects.WalletTransferPage import WalletTransferPage
 from PageObjects.DMTPage import DMTPage
@@ -171,6 +177,88 @@ class Test_001_Login(unittest.TestCase):
         self.upi.paymenyViaQR()
         self.upi.clickonCMS()
 
+    def test_14_CMSPage(self):
+        self.cms = CMSPage(driver)
+        self.cms.clickonSwiftXMoneytransferMenu()
+
+
+    def test_15_SwiftXMoneyTransferPage(self):
+        self.swift = SwiftXMoneyTransferPage(driver)
+        self.swift.setMobileNumber(9407271094)
+        self.swift.clickonDMT()
+        self.swift.clickonSearch()
+        self.swift.clickonAddBeneficiary()
+        self.swift.fillForm("5000")
+        self.swift.clickonPopUp()
+        self.cms.clickonSwiftXMoneytransferMenu()
+        self.swift.setMobileNumber(9407271094)
+        self.swift.clickonSwifX()
+        self.swift.clickonSearch()
+        self.swift.clickonAddBeneficiary()
+        self.swift.fillForm("25000")
+        self.swift.clickonPopUp()
+        self.swift.clickonReportsPage("Ledger Reports")
+
+    def test_16_ReportsPage(self):
+        self.rp = ReportsPage(driver)
+        self.rp.setFillterByDateAndStatusLadger()
+        self.rp.setFillterByTransactionIDLadger()
+        self.swift.clickonReportsPage("DMT Reports")
+        self.rp.setFillterByDateAndStatusDMT()
+        self.rp.setFillterByTransactionIDDMT()
+        self.rp.setFillterByOrderIdDMT()
+        self.swift.clickonReportsPage("Payout Reports")
+        self.rp.setFillterByDateAndStatusPayout()
+        self.rp.setFillterByTransactionIDPayout()
+        self.rp.setFillterByOrderIdPayout()
+        self.swift.clickonReportsPage("Recharge Reports")
+        self.rp.setFillterByDateandStatusRecharge()
+        self.rp.setFillterByTransactionIDRecharge()
+        self.rp.setFillterByOrderIdRecharge()
+        self.swift.clickonReportsPage("BBPS Reports")
+        self.rp.setFillterByDateandStatusBbps()
+        self.rp.setFillterByTransactionIDBbps()
+        self.rp.setFillterByOrderIdBbps()
+        self.swift.clickonReportsPage("Credit Card Reports")
+        self.rp.setFillterByDateandStatusCCPay()
+        self.rp.setFillterByTransactionIDCCPay()
+        self.rp.setFillterByOrderIdCCPay()
+        self.swift.clickonReportsPage("UPI Reports")
+        self.rp.setFillterByDateandStatusUPIPayment()
+        self.rp.setFillterByTransactionIDUPIPayment()
+        self.rp.setFillterByOrderIdUPIPayment()
+        self.swift.clickonReportsPage("SwiftX Reports")
+        self.rp.setFillterByDateandStatusSwiftX()
+        self.rp.setFillterByTransactionIDSwiftX()
+        self.rp.setFillterByOrderIdUPIPayment()
+        self.rp.clickonMyPlanMenu()
+
+    def test_17_MyPlan(self):
+        self.mp = MyPlan(driver)
+        self.mp.clickonRenewNow()
+        self.mp.clickonPopupRenewNow()
+        self.mp.clickonCompairPlanMenu()
+
+
+    def test_18_ComparePlans(self):
+        self.cp = ComparePlans(driver)
+        self.cp.compareAEPS()
+        self.cp.clickonDMT()
+        self.cp.clickonPayout()
+        self.cp.clickonBBPS()
+        self.cp.clickonRecharge()
+        self.cp.clickonPayIn()
+        self.cp.clickonCMS()
+        self.cp.clickonUPI()
+        self.cp.clickonCCPay()
+        self.cp.clickonSwiftX()
+        self.cp.clickonFundRequestMenu()
+
+    def test_19_FundRequest(self):
+        self.fr = FundRequest(driver)
+        self.fr.cliconCreateFundRequest()
+        self.fr.clickonBiometricSupportMenu()
+        self.db.clickonLogOut()
 
 
     @classmethod

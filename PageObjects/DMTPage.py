@@ -15,6 +15,7 @@ class DMTPage:
     btncompleteKYC_xpath = "//button[@id='submitBtnKy']"
     txtOTP_xpath = "//input[@id='otp']"
     btnSubmit_xpath = "//*[@id='remitterForm']/div/div[2]/button"
+    btnAddBeneficiary_xpath = "//button[@data-bs-target='#exampleModal']"
     dropdownBankName_xpath = "//button[@data-bs-target='#exampleModal']"
     txtaccountHolderName_xpath = "//input[@placeholder='Enter Account Holder Name']"
     txtbeneficiaryMobile_xpath = "//input[@id='receivermobile']"
@@ -60,13 +61,14 @@ class DMTPage:
         self.driver.find_element(By.XPATH,self.btnSubmit_xpath).click()
 
     def clickonAddBeneficiaryBank1(self):
+        self.driver.find_element(By.XPATH,self.btnAddBeneficiary_xpath).click()
         self.driver.find_element(By.XPATH,self.dropdownBankName_xpath).click()
         select=Select(self.driver.find_element(By.XPATH,"//input[@id='bbanknamesmain-selectized']"))
-        select.select_by_visible_text("HDFC BANK")
+        select.select_by_visible_text("STATE BANK OF INDIA")
         self.driver.find_element(By.XPATH,self.txtaccountHolderName_xpath).send_keys("Vishal kumar")
         self.driver.find_element(By.XPATH,self.txtbeneficiaryMobile_xpath).send_keys(9407271094)
         self.driver.find_element(By.XPATH,self.txtaccountNumber_xpath).send_keys(9898980989)
-        self.driver.find_element(By.XPATH,self.txtifcCode_xpath).send_keys("HDFC0101A")
+        self.driver.find_element(By.XPATH,self.txtifcCode_xpath).send_keys("SBIN00555")
         self.driver.find_element(By.XPATH,self.btnSubmit2_xpath).click()
 
     def clickonFetchallBeneficiaryBank1(self):
