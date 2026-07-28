@@ -100,7 +100,6 @@ class Test_001_Login(unittest.TestCase):
         self.wtp.clickonHistory()
         self.wtp.clickonWalletLoad()
 
-
     def test_05_WalletLoadPage(self):
         self.wlp = WalletLoadPage(driver)
         self.wlp.clickonInstantSattlement()

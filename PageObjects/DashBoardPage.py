@@ -251,8 +251,8 @@ class DashBoardPage:
             self.driver.save_screenshot(".\\Screenshortpass\\test_03_DashBoardPage_settingCurrentData.png")
         else:
             self.driver.save_screenshot(".\\Screenshortfail\\test_03_DashBoardPage_settingCurrentData.png")
-        #time.sleep(5)
-        Wait.wait_for_click(self.driver,(By.XPATH,"(//button[@class='btn btn-primary digiFin_orange_btn'])[1]")).click()
+        time.sleep(5)
+        Wait.wait_for_click(self.driver,(By.XPATH,"//div[@id='pills-tabContent']/div[1]/form/div[3]/button")).click()
         #self.driver.find_element(By.XPATH,"(//button[@class='btn btn-primary digiFin_orange_btn'])[1]").click()
 
 
@@ -291,12 +291,15 @@ class DashBoardPage:
 
     def clickonSupport(self):
         self.driver.find_element(By.XPATH,self.lnksupport_xpath).click()
-        supEmail=self.driver.find_element(By.XPATH,"//a[@href='mailto:BGRT@GMAIL.COM']").get_attribute("href")
-        print(supEmail)
-        callus=self.driver.find_element(By.XPATH,"//a[@href='tel:9298282828']").get_attribute("href")
-        print(callus)
-        suphours=self.driver.find_element(By.XPATH,"(//div[@class='support-info'])[3]").get_attribute("innerHTML")
-        print(suphours)
+        # supEmail=self.driver.find_element(By.XPATH,"//a[@href='mailto:BGRT@GMAIL.COM']")
+        # mail=supEmail.get_attribute("value")
+        # print(mail)
+        # callus=self.driver.find_element(By.XPATH,"//a[@href='tel:9298282828']")
+        # call=callus.get_attribute("value")
+        # print(call)
+        # suphours=self.driver.find_element(By.XPATH,"(//div[@class='support-info'])[3]")
+        # support=suphours.get_attribute("value")
+        # print(support)
         if "support" in self.driver.current_url:
             self.driver.save_screenshot(".\\Screenshortpass\\test_03_DashBoardPage_support.png")
         else:
